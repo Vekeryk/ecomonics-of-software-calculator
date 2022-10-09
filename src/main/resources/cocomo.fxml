@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.CocomoFXMLController">
+   <children>
+      <AnchorPane layoutY="-2.0" prefHeight="37.0" prefWidth="800.0">
+         <children>
+            <ComboBox fx:id="projectType" layoutX="243.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="Тип проекту" />
+            <TextField fx:id="size" layoutX="408.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="Рядків коду (тисячі)" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="properties" layoutX="-3.0" layoutY="34.0" prefHeight="416.0" prefWidth="800.0">
+         <columns>
+            <TableColumn fx:id="name" editable="false" minWidth="2.0" prefWidth="255.0" resizable="false" sortable="false" text="Атрибути вартості" />
+            <TableColumn editable="false" prefWidth="477.0" resizable="false" sortable="false" text="Рейтиг">
+               <columns>
+                  <TableColumn fx:id="veryLow" editable="false" prefWidth="90.0" sortable="false" text="Дуже низький" />
+                  <TableColumn fx:id="low" editable="false" minWidth="0.0" prefWidth="90.0" sortable="false" text="Низький" />
+                  <TableColumn fx:id="average" editable="false" prefWidth="90.0" sortable="false" text="Середній" />
+                  <TableColumn fx:id="high" editable="false" prefWidth="90.0" sortable="false" text="Високий" />
+                  <TableColumn fx:id="veryHigh" editable="false" prefWidth="93.0" sortable="false" text="Дуже високий" />
+                  <TableColumn fx:id="critical" editable="false" prefWidth="90.0" sortable="false" text="Критичний" />
+               </columns>
+            </TableColumn>
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

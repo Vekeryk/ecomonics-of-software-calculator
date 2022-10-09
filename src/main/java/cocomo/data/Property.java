@@ -1,5 +1,7 @@
 package cocomo.data;
 
+import javafx.scene.control.ToggleGroup;
+
 public enum Property {
     RELY(
             "Необхідна надійність ПЗ",
@@ -47,7 +49,7 @@ public enum Property {
             0
     ),
     VIRT(
-            "Нестійкість оточення віртуальної машини",
+            "Нестійкість віртуального оточення",
             0,
             0.87,
             1,
@@ -137,6 +139,7 @@ public enum Property {
             0
     );
 
+    public final ToggleGroup toggleGroup = new ToggleGroup();
     public final String name;
     public final double veryLow;
     public final double low;

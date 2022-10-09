@@ -13,9 +13,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
-        primaryStage.setTitle("COCOMO Calculator");
-        primaryStage.setScene(new Scene(root, 600, 300));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("calculator.fxml"));
+        primaryStage.setTitle("Economics of Software");
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
 }
