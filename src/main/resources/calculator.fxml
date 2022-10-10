@@ -1,41 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.CalculatorFXMLController">
-   <children>
-      <SplitPane dividerPositions="0.8478260869565217" orientation="VERTICAL" prefHeight="600.0" prefWidth="603.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="598.0">
+<BorderPane minHeight="-Infinity" minWidth="500.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.CalculatorFXMLController">
+   <bottom>
+      <BorderPane minWidth="800.0" prefHeight="60.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#showResult" prefWidth="84.0" text="Розрахувати" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="52.0" prefWidth="213.0" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane fx:id="methods" layoutX="1.0" layoutY="11.0" prefHeight="515.0" prefWidth="798.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                        <Tab text="COCOMO">
-                           <content>
-                              <AnchorPane prefHeight="456.0" prefWidth="800.0">
-                                 <children>
-                                    <fx:include fx:id="cocomo" source="cocomo.fxml" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </Tab>
-                    </tabs>
-                  </TabPane>
+                  <BorderPane prefHeight="51.0" prefWidth="222.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0">
+                     <top>
+                        <Label prefHeight="0.0" prefWidth="161.0" text="Трудомістськість(люд. × міс.)" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <Label fx:id="peopleOnMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="601.0">
+         </left>
+         <center>
+            <AnchorPane prefHeight="52.0" prefWidth="360.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="357.0" layoutY="57.0" mnemonicParsing="false" onAction="#showResult" text="Розрахувати" textAlignment="CENTER" />
-                  <Label layoutX="64.0" layoutY="7.0" prefHeight="17.0" prefWidth="161.0" text="Трудомістськість(люд. × міс.)" />
-                  <Label layoutX="300.0" layoutY="7.0" text="Час розробки в календарих місяцях" />
-                  <Label layoutX="588.0" layoutY="7.0" text="Чисельність персоналу" />
-                  <Label fx:id="peopleOnMonth" alignment="CENTER" layoutX="128.0" layoutY="31.0" text="    " />
-                  <Label fx:id="timeAtMonth" alignment="CENTER" layoutX="385.0" layoutY="31.0" text="    " />
-                  <Label fx:id="numberOfEmployee" alignment="CENTER" layoutX="644.0" layoutY="31.0" text="    " />
+                  <BorderPane layoutX="31.0" layoutY="-3.0" prefHeight="52.0" prefWidth="311.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="25.0">
+                     <center>
+                        <Label fx:id="timeAtMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <Label prefHeight="23.0" prefWidth="203.0" text="Час розробки в календарих місяцях" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
                </children>
             </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
-</VBox>
+         </center>
+         <right>
+            <AnchorPane prefHeight="52.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane layoutX="47.0" layoutY="-3.0" prefHeight="55.0" prefWidth="127.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="46.0">
+                     <top>
+                        <Label prefHeight="22.0" prefWidth="127.0" text="Чисельність персоналу" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <Label fx:id="numberOfEmployee" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </bottom>
+   <top>
+      <TabPane fx:id="methods" prefHeight="510.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+            <Tab text="COCOMO">
+               <content>
+                  <AnchorPane prefHeight="522.0" prefWidth="800.0">
+                     <children>
+                        <fx:include fx:id="cocomo" source="cocomo.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </top>
+</BorderPane>

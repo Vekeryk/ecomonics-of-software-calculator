@@ -1,9 +1,9 @@
 package cocomo.controllers;
 
-import cocomo.components.CustomRadioButton;
 import cocomo.data.CocomoProject;
 import cocomo.data.Property;
 import cocomo.data.Result;
+import cocomo.exception.MissingRequiredFieldException;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -25,38 +26,40 @@ public class CocomoFXMLController implements BasedController, Initializable {
     @FXML
     private TableColumn<Property, String> name;
     @FXML
-    private TableColumn<Property, CustomRadioButton> veryLow;
+    private TableColumn<Property, RadioButton> veryLow;
     @FXML
-    private TableColumn<Property, CustomRadioButton> low;
+    private TableColumn<Property, RadioButton> low;
     @FXML
-    private TableColumn<Property, CustomRadioButton> average;
+    private TableColumn<Property, RadioButton> average;
     @FXML
-    private TableColumn<Property, CustomRadioButton> high;
+    private TableColumn<Property, RadioButton> high;
     @FXML
-    private TableColumn<Property, CustomRadioButton> veryHigh;
+    private TableColumn<Property, RadioButton> veryHigh;
     @FXML
-    private TableColumn<Property, CustomRadioButton> critical;
+    private TableColumn<Property, RadioButton> critical;
 
     @Override
     public Result getResult() {
         try {
             double size = Double.parseDouble(this.size.getText());
             CocomoProject cocomoProject = projectType.getSelectionModel().getSelectedItem();
+            Optional.ofNullable(cocomoProject).orElseThrow(MissingRequiredFieldException::new);
+
             double eaf = Arrays.stream(Property.values())
-                    .mapToDouble(p -> ((CustomRadioButton) p.toggleGroup.getSelectedToggle()).getValue())
+                    .mapToDouble(p -> (double) p.toggleGroup.getSelectedToggle().getUserData())
                     .reduce(1, (a, b) -> a * b);
             double pm = eaf * cocomoProject.a * Math.pow(size, cocomoProject.b);
             double tm = cocomoProject.c * Math.pow(pm, cocomoProject.d);
-            double ss = pm/tm;
+            double ss = pm / tm;
             return new Result(pm, tm, ss);
         } catch (NumberFormatException nfe) {
             AlertController.showAlert(Alert.AlertType.WARNING, "Неправильний формат вводу",
                     "Введіть числове значення в поле кількості рядків.");
-        } catch (NullPointerException nullPointerException) {
+        } catch (MissingRequiredFieldException mrfe) {
             AlertController.showAlert(Alert.AlertType.WARNING, "Неправильний формат вводу",
-                    "Оберіть тип проекту.");
+                    "Введіть дані у всі поля.");
         }
-        return new Result(0, 0 ,0);
+        return new Result(0, 0, 0);
     }
 
     @Override
@@ -75,16 +78,16 @@ public class CocomoFXMLController implements BasedController, Initializable {
         properties.setSelectionModel(null);
     }
 
-    private SimpleObjectProperty<CustomRadioButton> simpleObjectProperty(double value, ToggleGroup toggleGroup, boolean selected) {
-        CustomRadioButton radioButton;
+    private SimpleObjectProperty<RadioButton> simpleObjectProperty(double value, ToggleGroup toggleGroup, boolean selected) {
+        RadioButton radioButton;
         if (value == 0) {
-            radioButton = new CustomRadioButton("n/a");
+            radioButton = new RadioButton("n/a");
             radioButton.setDisable(true);
         } else {
-            radioButton = new CustomRadioButton(String.valueOf(value));
+            radioButton = new RadioButton(String.valueOf(value));
             radioButton.setToggleGroup(toggleGroup);
             radioButton.setSelected(selected);
-            radioButton.setValue(value);
+            radioButton.setUserData(value);
         }
         return new SimpleObjectProperty<>(radioButton);
     }
