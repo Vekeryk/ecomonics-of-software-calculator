@@ -1,6 +1,7 @@
 package cocomo.controllers;
 
 import cocomo.data.CocomoProject;
+import cocomo.data.Priority;
 import cocomo.data.Property;
 import cocomo.data.Result;
 import cocomo.exception.MissingRequiredFieldException;
@@ -67,28 +68,14 @@ public class CocomoFXMLController implements BasedController, Initializable {
         projectType.getItems().setAll(CocomoProject.values());
 
         name.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().name));
-        veryLow.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().veryLow, cell.getValue().toggleGroup, false));
-        low.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().low, cell.getValue().toggleGroup, false));
-        average.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().average, cell.getValue().toggleGroup, true));
-        high.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().high, cell.getValue().toggleGroup, false));
-        veryHigh.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().veryHigh, cell.getValue().toggleGroup, false));
-        critical.setCellValueFactory(cell -> simpleObjectProperty(cell.getValue().critical, cell.getValue().toggleGroup, false));
+        veryLow.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.VERY_LOW)));
+        low.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.LOW)));
+        average.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.AVERAGE)));
+        high.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.HIGH)));
+        veryHigh.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.VERY_HIGH)));
+        critical.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().buttons.get(Priority.CRITICAL)));
 
         properties.getItems().setAll(Property.values());
         properties.setSelectionModel(null);
-    }
-
-    private SimpleObjectProperty<RadioButton> simpleObjectProperty(double value, ToggleGroup toggleGroup, boolean selected) {
-        RadioButton radioButton;
-        if (value == 0) {
-            radioButton = new RadioButton("n/a");
-            radioButton.setDisable(true);
-        } else {
-            radioButton = new RadioButton(String.valueOf(value));
-            radioButton.setToggleGroup(toggleGroup);
-            radioButton.setSelected(selected);
-            radioButton.setUserData(value);
-        }
-        return new SimpleObjectProperty<>(radioButton);
     }
 }

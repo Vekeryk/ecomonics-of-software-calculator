@@ -1,6 +1,9 @@
 package cocomo.data;
 
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+
+import java.util.HashMap;
 
 public enum Property {
     RELY(
@@ -137,8 +140,10 @@ public enum Property {
             1.04,
             1.10,
             0
-    );
+    ),
+    ;
 
+    public final HashMap<Priority, RadioButton> buttons = new HashMap<>();
     public final ToggleGroup toggleGroup = new ToggleGroup();
     public final String name;
     public final double veryLow;
@@ -158,5 +163,30 @@ public enum Property {
         this.high = high;
         this.veryHigh = veryHigh;
         this.critical = critical;
+
+        createButtons();
+    }
+
+    public void createButtons() {
+        buttons.put(Priority.VERY_LOW, buttonFactory(veryLow, Priority.VERY_LOW));
+        buttons.put(Priority.LOW, buttonFactory(low, Priority.LOW));
+        buttons.put(Priority.AVERAGE, buttonFactory(average, Priority.AVERAGE));
+        buttons.put(Priority.HIGH, buttonFactory(high, Priority.HIGH));
+        buttons.put(Priority.VERY_HIGH, buttonFactory(veryHigh, Priority.VERY_HIGH));
+        buttons.put(Priority.CRITICAL, buttonFactory(critical, Priority.CRITICAL));
+    }
+
+    private RadioButton buttonFactory(double value, Priority priority) {
+        RadioButton radioButton;
+        if (value == 0) {
+            radioButton = new RadioButton("n/a");
+            radioButton.setDisable(true);
+        } else {
+            radioButton = new RadioButton(String.valueOf(value));
+            radioButton.setToggleGroup(toggleGroup);
+            radioButton.setSelected(priority.selected);
+            radioButton.setUserData(value);
+        }
+        return radioButton;
     }
 }
