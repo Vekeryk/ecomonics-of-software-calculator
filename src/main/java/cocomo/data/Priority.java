@@ -1,16 +1,19 @@
 package cocomo.data;
 
 public enum Priority {
-    VERY_LOW(false),
-    LOW(false),
-    AVERAGE(true),
-    HIGH(false),
-    VERY_HIGH(false),
-    CRITICAL(false);
+    EXTRA_LOW(false, "Критичний"),
+    VERY_LOW(false, "Дуже низький"),
+    LOW(false, "Низький"),
+    AVERAGE(true, "Середній"),
+    HIGH(false, "Високий"),
+    VERY_HIGH(false, "Дуже високий"),
+    EXTRA_HIGH(false, "Критичний");
 
     public final boolean selected;
+    public final String name;
 
-    Priority(boolean selected) {
+    Priority(boolean selected, String name) {
         this.selected = selected;
+        this.name = name;
     }
 }

@@ -16,16 +16,7 @@
             <TableView fx:id="properties" minWidth="800.0" prefHeight="451.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <columns>
                   <TableColumn fx:id="name" editable="false" minWidth="2.0" prefWidth="255.0" sortable="false" text="Атрибути вартості" />
-                  <TableColumn editable="false" prefWidth="477.0" resizable="false" sortable="false" text="Рейтиг">
-                     <columns>
-                        <TableColumn fx:id="veryLow" editable="false" prefWidth="90.0" sortable="false" text="Дуже низький" />
-                        <TableColumn fx:id="low" editable="false" minWidth="0.0" prefWidth="90.0" sortable="false" text="Низький" />
-                        <TableColumn fx:id="average" editable="false" prefWidth="90.0" sortable="false" text="Середній" />
-                        <TableColumn fx:id="high" editable="false" prefWidth="90.0" sortable="false" text="Високий" />
-                        <TableColumn fx:id="veryHigh" editable="false" prefWidth="93.0" sortable="false" text="Дуже високий" />
-                        <TableColumn fx:id="critical" editable="false" prefWidth="90.0" sortable="false" text="Критичний" />
-                     </columns>
-                  </TableColumn>
+                  <TableColumn editable="false" prefWidth="544.0" resizable="false" sortable="false" text="Рейтинг" />
                </columns>
             </TableView>
          </bottom>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.Cocomo2FXMLController">
+   <children>
+      <BorderPane prefHeight="485.0" prefWidth="800.0">
+         <center>
+            <Accordion prefHeight="402.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+              <panes>
+                <TitledPane animated="false" prefHeight="381.0" prefWidth="800.0" text="Чинники масштабу">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="798.0">
+                           <children>
+                              <TableView fx:id="scaleDrivers" minWidth="786.0" prefHeight="389.0" prefWidth="800.0">
+                                 <columns>
+                                    <TableColumn editable="false" minWidth="2.0" prefWidth="255.0" sortable="false" text="Чинники масштабу" />
+                                    <TableColumn editable="false" prefWidth="542.0" resizable="false" sortable="false" text="Рівень значущості чинника" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="415.0" prefWidth="798.0" text="Множники трудомісткості">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="costDrivers" minWidth="794.0" prefHeight="386.0" prefWidth="800.0">
+                                 <columns>
+                                    <TableColumn editable="false" minWidth="2.0" prefWidth="201.0" sortable="false" text="Множники трудомісткості" />
+                                    <TableColumn editable="false" prefWidth="595.0" resizable="false" sortable="false" text="Оцінка рівня множника трудомісткості" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </center>
+         <top>
+            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ComboBox fx:id="calculationType" onAction="#changeType" prefHeight="25.0" prefWidth="186.0" promptText="Тип розрахунку" />
+                  <TextField fx:id="size" prefHeight="25.0" prefWidth="186.0" promptText="Рядків коду (тисячі)" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

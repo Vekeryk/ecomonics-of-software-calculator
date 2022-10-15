@@ -23,7 +23,7 @@
                <children>
                   <BorderPane prefHeight="51.0" prefWidth="222.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0">
                      <top>
-                        <Label prefHeight="0.0" prefWidth="161.0" text="Трудомістськість(люд. × міс.)" BorderPane.alignment="CENTER" />
+                        <Label prefHeight="17.0" prefWidth="150.0" text="Трудомісткість(люд. × міс.)" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
                         <Label fx:id="peopleOnMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
@@ -64,17 +64,26 @@
    </bottom>
    <top>
       <TabPane fx:id="methods" prefHeight="510.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-            <Tab text="COCOMO">
+         <tabs>
+            <Tab onSelectionChanged="#changeMode" text="COCOMO">
                <content>
                   <AnchorPane prefHeight="522.0" prefWidth="800.0">
                      <children>
-                        <fx:include fx:id="cocomo" source="cocomo.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <fx:include fx:id="cocomo" source="cocomo.fxml" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-        </tabs>
+            <Tab text="COCOMO 2">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="467.0" prefWidth="800.0">
+                     <children>
+                        <fx:include fx:id="cocomo2" source="cocomo2.fxml" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
       </TabPane>
    </top>
 </BorderPane>
