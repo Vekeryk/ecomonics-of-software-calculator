@@ -12,7 +12,7 @@ import java.util.List;
 
 public enum EarlyCostProperty implements Property {
     PERS(
-            "Можливості аналітика",
+            "Кваліфікація персоналу",
             2.12,
             1.62,
             1.16,
@@ -22,7 +22,7 @@ public enum EarlyCostProperty implements Property {
             0.50
     ),
     PREX(
-            "Досвід розробки додатків",
+            "Досвід персоналу",
             1.59,
             1.33,
             1.22,
@@ -32,7 +32,7 @@ public enum EarlyCostProperty implements Property {
             0.62
     ),
     RCPX(
-            "Можливості програміста",
+            "Складність і надійність продукту",
             0.49,
             0.60,
             0.83,
@@ -42,7 +42,7 @@ public enum EarlyCostProperty implements Property {
             2.72
     ),
     RUSE(
-            "Тривалість роботи персоналу",
+            "Розробка для повторного використання",
             0,
             0,
             0.95,
@@ -52,7 +52,7 @@ public enum EarlyCostProperty implements Property {
             1.24
     ),
     PDIF(
-            "Досвід роботи з платформою",
+            "Складність платформи розробки",
             0,
             0,
             0.87,
