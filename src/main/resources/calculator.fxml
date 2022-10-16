@@ -10,20 +10,20 @@
 
 <BorderPane minHeight="-Infinity" minWidth="500.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.CalculatorFXMLController">
    <bottom>
-      <BorderPane minWidth="800.0" prefHeight="60.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <BorderPane minWidth="800.0" prefHeight="57.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <bottom>
-            <Button mnemonicParsing="false" onAction="#showResult" prefWidth="84.0" text="Розрахувати" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#showResult" prefHeight="26.0" prefWidth="138.0" text="Розрахувати" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin>
             </Button>
          </bottom>
          <left>
-            <AnchorPane prefHeight="52.0" prefWidth="213.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="23.0" prefWidth="214.0" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane prefHeight="51.0" prefWidth="222.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0">
+                  <BorderPane prefHeight="53.0" prefWidth="215.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0">
                      <top>
-                        <Label prefHeight="17.0" prefWidth="150.0" text="Трудомісткість(люд. × міс.)" BorderPane.alignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="34.0" prefWidth="215.0" text="Трудомісткість(люд. × міс.)" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
                         <Label fx:id="peopleOnMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
@@ -40,7 +40,7 @@
                         <Label fx:id="timeAtMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
                      </center>
                      <top>
-                        <Label prefHeight="23.0" prefWidth="203.0" text="Час розробки в календарих місяцях" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="310.0" text="Час розробки в календарих місяцях" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                      </top>
                   </BorderPane>
                </children>
@@ -49,9 +49,9 @@
          <right>
             <AnchorPane prefHeight="52.0" prefWidth="220.0" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane layoutX="47.0" layoutY="-3.0" prefHeight="55.0" prefWidth="127.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="46.0">
+                  <BorderPane layoutX="2.0" layoutY="-3.0" prefHeight="55.0" prefWidth="216.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
                      <top>
-                        <Label prefHeight="22.0" prefWidth="127.0" text="Чисельність персоналу" BorderPane.alignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="216.0" text="Чисельність персоналу" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
                         <Label fx:id="numberOfEmployee" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
@@ -63,11 +63,11 @@
       </BorderPane>
    </bottom>
    <top>
-      <TabPane fx:id="methods" prefHeight="510.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="methods" prefHeight="513.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
          <tabs>
             <Tab onSelectionChanged="#changeMode" text="COCOMO">
                <content>
-                  <AnchorPane prefHeight="522.0" prefWidth="800.0">
+                  <AnchorPane prefHeight="518.0" prefWidth="800.0">
                      <children>
                         <fx:include fx:id="cocomo" source="cocomo.fxml" />
                      </children>
@@ -76,7 +76,7 @@
             </Tab>
             <Tab text="COCOMO 2">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="467.0" prefWidth="800.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="800.0">
                      <children>
                         <fx:include fx:id="cocomo2" source="cocomo2.fxml" />
                      </children>
