@@ -1,5 +1,8 @@
+# Java 8 & JavaFX
 Калькулятор оцінки вартості розробки програмної системи за різними моделями підрахунку
 
-**Java 8 & JavaFX**
+## COCOMO
+![COCOMO](images/cocomo.png)
 
-![COCOMO](images/screenshot.png)
+## COCOMO2
+![COCOMO2](images/cocomo2.png)
