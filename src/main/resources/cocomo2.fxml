@@ -15,9 +15,9 @@
    <children>
       <BorderPane prefHeight="485.0" prefWidth="800.0">
          <center>
-            <Accordion prefHeight="402.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <Accordion fx:id="accordion" prefHeight="402.0" prefWidth="800.0" BorderPane.alignment="CENTER">
               <panes>
-                <TitledPane animated="false" prefHeight="381.0" prefWidth="800.0" text="Чинники масштабу">
+                <TitledPane prefHeight="381.0" prefWidth="800.0" text="Чинники масштабу">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="798.0">
                            <children>
@@ -31,7 +31,7 @@
                         </AnchorPane>
                   </content>
                 </TitledPane>
-                <TitledPane animated="false" prefHeight="415.0" prefWidth="798.0" text="Множники трудомісткості">
+                <TitledPane prefHeight="415.0" prefWidth="798.0" text="Множники трудомісткості">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

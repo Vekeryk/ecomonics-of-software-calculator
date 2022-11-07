@@ -7,6 +7,7 @@ import cocomo.data.cocomo2.PostCostProperty;
 import cocomo.data.cocomo2.Project;
 import cocomo.data.cocomo2.ScaleProperty;
 import cocomo.exception.MissingRequiredFieldException;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class Cocomo2FXMLController implements BasedController, Initializable {
+public class Cocomo2FXMLController extends BasedController implements Initializable {
     @FXML
     private TextField size;
     @FXML
@@ -27,12 +28,14 @@ public class Cocomo2FXMLController implements BasedController, Initializable {
     private TableView<Property> scaleDrivers;
     @FXML
     private TableView<Property> costDrivers;
+    @FXML
+    private Accordion accordion;
 
     @Override
     public Result getResult() {
         double size = Double.parseDouble(this.size.getText());
         Project type = calculationType.getSelectionModel().getSelectedItem();
-        Optional.ofNullable(type).orElseThrow(MissingRequiredFieldException::new);
+        Optional.ofNullable(type).orElseThrow(() -> new MissingRequiredFieldException("Оберіть тип розрахунку"));
         ObservableList<Property> costDriversItems = costDrivers.getItems();
 
         double sf = Arrays.stream(ScaleProperty.values())
@@ -43,8 +46,9 @@ public class Cocomo2FXMLController implements BasedController, Initializable {
                 .reduce(1, (a, b) -> a * b);
         double e = type.b + 0.01 * sf;
         double pm = eaf * type.a * Math.pow(size, e);
-        double sced = (double) costDriversItems.get(costDriversItems.size() - 1).getToggleGroup().getSelectedToggle().getUserData();
-        double tm = sced * type.c * Math.pow(pm/sced, type.d + 0.2 * (e - type.b));
+        double sced = (double) costDriversItems.get(costDriversItems.size() - 1)
+                .getToggleGroup().getSelectedToggle().getUserData();
+        double tm = sced * type.c * Math.pow(pm / sced, type.d + 0.2 * (e - type.b));
         double ss = pm / tm;
         return new Result(pm, tm, ss);
     }
@@ -56,6 +60,11 @@ public class Cocomo2FXMLController implements BasedController, Initializable {
         fillTable(scaleDrivers, ScaleProperty.values());
         fillTable(costDrivers, EarlyCostProperty.values());
         costDrivers.getItems().clear();
+        accordion.expandedPaneProperty().addListener((observable, oldPane, newPane) -> {
+            if (oldPane != null) oldPane.setCollapsible(true);
+            if (newPane != null) Platform.runLater(() -> newPane.setCollapsible(false));
+        });
+        accordion.setExpandedPane(accordion.getPanes().get(1));
     }
 
     public void changeType() {
