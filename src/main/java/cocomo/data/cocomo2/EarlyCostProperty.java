@@ -4,7 +4,7 @@ import cocomo.data.Priority;
 import cocomo.data.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Control;
 import javafx.scene.control.ToggleGroup;
 
 import java.util.Arrays;
@@ -84,14 +84,14 @@ public enum EarlyCostProperty implements Property {
 
     public final ToggleGroup toggleGroup = new ToggleGroup();
     public final SimpleStringProperty name;
-    public final SimpleObjectProperty<RadioButton> criticalLow;
-    public final SimpleObjectProperty<RadioButton> veryLow;
-    public final SimpleObjectProperty<RadioButton> low;
-    public final SimpleObjectProperty<RadioButton> average;
-    public final SimpleObjectProperty<RadioButton> high;
-    public final SimpleObjectProperty<RadioButton> veryHigh;
-    public final SimpleObjectProperty<RadioButton> extraHigh;
-    public final List<SimpleObjectProperty<RadioButton>> priorities;
+    public final SimpleObjectProperty<Control> criticalLow;
+    public final SimpleObjectProperty<Control> veryLow;
+    public final SimpleObjectProperty<Control> low;
+    public final SimpleObjectProperty<Control> average;
+    public final SimpleObjectProperty<Control> high;
+    public final SimpleObjectProperty<Control> veryHigh;
+    public final SimpleObjectProperty<Control> extraHigh;
+    public final List<SimpleObjectProperty<Control>> priorities;
 
     EarlyCostProperty(String name, double criticalLow, double veryLow,
                       double low, double average,
@@ -113,7 +113,7 @@ public enum EarlyCostProperty implements Property {
     }
 
     @Override
-    public List<SimpleObjectProperty<RadioButton>> getRadioPropertyPriorities() {
+    public List<SimpleObjectProperty<Control>> getControls() {
         return priorities;
     }
 
@@ -128,15 +128,15 @@ public enum EarlyCostProperty implements Property {
     }
 
     @Override
-    public Priority[] getPriorities() {
-        return new Priority[] {
-                Priority.EXTRA_LOW,
-                Priority.VERY_LOW,
-                Priority.LOW,
-                Priority.AVERAGE,
-                Priority.HIGH,
-                Priority.VERY_HIGH,
-                Priority.EXTRA_HIGH
+    public String[] getNames() {
+        return new String[]{
+                Priority.EXTRA_LOW.name,
+                Priority.VERY_LOW.name,
+                Priority.LOW.name,
+                Priority.AVERAGE.name,
+                Priority.HIGH.name,
+                Priority.VERY_HIGH.name,
+                Priority.EXTRA_HIGH.name
         };
     }
 }

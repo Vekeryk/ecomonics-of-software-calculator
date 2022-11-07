@@ -4,7 +4,7 @@ import cocomo.data.Priority;
 import cocomo.data.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Control;
 import javafx.scene.control.ToggleGroup;
 
 import java.util.Arrays;
@@ -167,13 +167,13 @@ public enum PostCostProperty implements Property {
 
     public final ToggleGroup toggleGroup = new ToggleGroup();
     public final SimpleStringProperty name;
-    public final SimpleObjectProperty<RadioButton> veryLow;
-    public final SimpleObjectProperty<RadioButton> low;
-    public final SimpleObjectProperty<RadioButton> average;
-    public final SimpleObjectProperty<RadioButton> high;
-    public final SimpleObjectProperty<RadioButton> veryHigh;
-    public final SimpleObjectProperty<RadioButton> critical;
-    public final List<SimpleObjectProperty<RadioButton>> priorities;
+    public final SimpleObjectProperty<Control> veryLow;
+    public final SimpleObjectProperty<Control> low;
+    public final SimpleObjectProperty<Control> average;
+    public final SimpleObjectProperty<Control> high;
+    public final SimpleObjectProperty<Control> veryHigh;
+    public final SimpleObjectProperty<Control> critical;
+    public final List<SimpleObjectProperty<Control>> priorities;
 
     PostCostProperty(String name, double veryLow,
                      double low, double average,
@@ -194,7 +194,7 @@ public enum PostCostProperty implements Property {
     }
 
     @Override
-    public List<SimpleObjectProperty<RadioButton>> getRadioPropertyPriorities() {
+    public List<SimpleObjectProperty<Control>> getControls() {
         return priorities;
     }
 

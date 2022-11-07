@@ -2,6 +2,7 @@ package cocomo.data;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Control;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
@@ -9,17 +10,21 @@ import java.util.List;
 
 public interface Property {
     SimpleStringProperty getName();
-    List<SimpleObjectProperty<RadioButton>> getRadioPropertyPriorities();
+
+    List<SimpleObjectProperty<Control>> getControls();
+
     ToggleGroup getToggleGroup();
+
     Property[] getValues();
-    default Priority[] getPriorities() {
-        return new Priority[] {
-                Priority.VERY_LOW,
-                Priority.LOW,
-                Priority.AVERAGE,
-                Priority.HIGH,
-                Priority.VERY_HIGH,
-                Priority.EXTRA_HIGH
+
+    default String[] getNames() {
+        return new String[]{
+                Priority.VERY_LOW.name,
+                Priority.LOW.name,
+                Priority.AVERAGE.name,
+                Priority.HIGH.name,
+                Priority.VERY_HIGH.name,
+                Priority.EXTRA_HIGH.name
         };
     }
 
@@ -33,6 +38,17 @@ public interface Property {
             radioButton.setToggleGroup(getToggleGroup());
             radioButton.setSelected(priority.selected);
             radioButton.setUserData(value);
+        }
+        return radioButton;
+    }
+
+    default RadioButton buttonFactory(double value) {
+        RadioButton radioButton;
+        radioButton = new RadioButton();
+        radioButton.setToggleGroup(getToggleGroup());
+        radioButton.setUserData(value);
+        if (value == 0) {
+            radioButton.setSelected(true);
         }
         return radioButton;
     }
