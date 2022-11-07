@@ -6,3 +6,6 @@
 
 ## COCOMO2
 ![COCOMO2](images/cocomo2.png)
+
+## Functional points
+![FUNCTIONAL_POINTS](images/functional_points.png)

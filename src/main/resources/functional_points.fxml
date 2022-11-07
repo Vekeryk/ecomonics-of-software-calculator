@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cocomo.controllers.FunctionalPointsFXMLController">
+   <children>
+      <BorderPane prefHeight="485.0" prefWidth="800.0">
+         <center>
+            <Accordion fx:id="accordion" prefHeight="402.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+              <panes>
+                <TitledPane expanded="false" prefHeight="381.0" prefWidth="800.0" text="Рівні складності">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="798.0">
+                           <children>
+                              <TableView fx:id="difficultyLevels" minWidth="786.0" prefHeight="389.0" prefWidth="800.0">
+                                 <columns>
+                                    <TableColumn editable="false" minWidth="2.0" prefWidth="255.0" sortable="false" text="Характеристика" />
+                                    <TableColumn editable="false" prefWidth="542.0" resizable="false" sortable="false" text="Рівень складності" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane expanded="false" prefHeight="415.0" prefWidth="798.0" text="Фактори середовища">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="environmentalFactors" minWidth="794.0" prefHeight="386.0" prefWidth="800.0">
+                                 <columns>
+                                    <TableColumn editable="false" minWidth="2.0" prefWidth="326.40000611543655" sortable="false" text="Фактори середовища" />
+                                    <TableColumn editable="false" prefWidth="470.4000244140625" resizable="false" sortable="false" text="Рейтинг" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </center>
+         <top>
+            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ComboBox fx:id="programmingLanguage" prefHeight="25.0" prefWidth="186.0" promptText="Мова програмування" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
