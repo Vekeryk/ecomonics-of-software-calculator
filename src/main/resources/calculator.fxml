@@ -23,10 +23,10 @@
                <children>
                   <BorderPane prefHeight="53.0" prefWidth="215.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0">
                      <top>
-                        <Label alignment="CENTER" prefHeight="34.0" prefWidth="215.0" text="Трудомісткість(люд. × міс.)" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                        <Label fx:id="resultName1" alignment="CENTER" prefHeight="34.0" prefWidth="215.0" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
-                        <Label fx:id="peopleOnMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                        <Label fx:id="result1" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </children>
@@ -37,10 +37,10 @@
                <children>
                   <BorderPane layoutX="31.0" layoutY="-3.0" prefHeight="52.0" prefWidth="311.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="25.0">
                      <center>
-                        <Label fx:id="timeAtMonth" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                        <Label fx:id="result2" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
                      </center>
                      <top>
-                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="310.0" text="Час розробки в календарих місяцях" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+                        <Label fx:id="resultName2" alignment="CENTER" prefHeight="35.0" prefWidth="310.0" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                      </top>
                   </BorderPane>
                </children>
@@ -51,10 +51,10 @@
                <children>
                   <BorderPane layoutX="2.0" layoutY="-3.0" prefHeight="55.0" prefWidth="216.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
                      <top>
-                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="216.0" text="Чисельність персоналу" BorderPane.alignment="CENTER" />
+                        <Label fx:id="resultName3" alignment="CENTER" prefHeight="35.0" prefWidth="216.0" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
-                        <Label fx:id="numberOfEmployee" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
+                        <Label fx:id="result3" alignment="CENTER" text="    " BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </children>
@@ -82,6 +82,15 @@
                      </children>
                   </AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Функціональні точки">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <fx:include fx:id="functionalPoints" source="functional_points.fxml" />
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
          </tabs>
       </TabPane>

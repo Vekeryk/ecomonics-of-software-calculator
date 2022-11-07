@@ -11,46 +11,65 @@ public class CalculatorFXMLController {
     @FXML
     private TabPane methods;
     @FXML
-    private Label peopleOnMonth;
+    private Label result1;
     @FXML
-    private Label timeAtMonth;
+    private Label result2;
     @FXML
-    private Label numberOfEmployee;
+    private Label result3;
+    @FXML
+    private Label resultName1;
+    @FXML
+    private Label resultName2;
+    @FXML
+    private Label resultName3;
     @FXML
     private CocomoFXMLController cocomoController;
     @FXML
     private Cocomo2FXMLController cocomo2Controller;
+    @FXML
+    private FunctionalPointsFXMLController functionalPointsController;
 
     public void showResult() {
         try {
-            String method = methods.getSelectionModel().getSelectedItem().getText();
-            Result result;
-            switch (method) {
-                case "COCOMO":
-                    result = cocomoController.getResult();
-                    break;
-                case "COCOMO 2":
-                    result = cocomo2Controller.getResult();
-                    break;
-                default:
-                    throw new IllegalArgumentException();
-            }
-            peopleOnMonth.setText(String.format("%.2f", result.peopleOnMonth));
-            timeAtMonth.setText(String.format("%.2f", result.timeAtMonth));
-            numberOfEmployee.setText(String.format("%.2f", result.numberOfEmployee));
+            BasedController controller = getCurrentController();
+            Result result = controller.getResult();
+            resultName1.setText(controller.getResultNames()[0]);
+            resultName2.setText(controller.getResultNames()[1]);
+            resultName3.setText(controller.getResultNames()[2]);
+            result1.setText(String.format("%.2f", result.result1));
+            result2.setText(String.format("%.2f", result.result2));
+            result3.setText(String.format("%.2f", result.result3));
         } catch (NumberFormatException nfe) {
             AlertController.showAlert(Alert.AlertType.WARNING, "Неправильний формат вводу",
-                    "Введіть числове значення в поле кількості рядків.");
+                    "Введіть числове значення в поле кількості.");
         } catch (MissingRequiredFieldException mrfe) {
-            AlertController.showAlert(Alert.AlertType.WARNING, "Неправильний формат вводу",
-                    "Введіть дані у всі поля.");
+            AlertController.showAlert(Alert.AlertType.WARNING, "Помилка розрахунку",
+                    mrfe.getMessage());
+        }
+    }
+
+    private BasedController getCurrentController() {
+        int selectedTab = methods.getSelectionModel().getSelectedIndex();
+
+        switch (selectedTab) {
+            case 0:
+                return cocomoController;
+            case 1:
+                return cocomo2Controller;
+            case 2:
+                return functionalPointsController;
+            default:
+                throw new IllegalArgumentException();
         }
     }
 
     @FXML
     private void changeMode() {
-        peopleOnMonth.setText("");
-        timeAtMonth.setText("");
-        numberOfEmployee.setText("");
+        resultName1.setText("");
+        resultName2.setText("");
+        resultName3.setText("");
+        result1.setText("");
+        result2.setText("Натисніть кнопку, щоб отримати результат");
+        result3.setText("");
     }
 }
